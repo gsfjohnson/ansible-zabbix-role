@@ -1,0 +1,7 @@
+---
+- include: setup-redhat.yml
+  when: ansible_os_family == 'RedHat'
+
+- name: service enable, start
+  service: name=zabbix-server state={{zabbix_svc_state}} enabled={{zabbix_svc_enabled}}
+

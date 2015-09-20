@@ -1,0 +1,13 @@
+---
+
+zabbix_version: 2.4
+zabbix_server: false
+zabbix_agent: false
+zabbix_svr_pkgs:
+  - zabbix-server-mysql
+  - zabbix-web-mysql
+  - mariadb-server
+  - mariadb
+zabbix_svc_state: started
+zabbix_svc_enabled: yes
+

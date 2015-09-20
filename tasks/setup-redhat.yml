@@ -1,0 +1,17 @@
+---
+- name: add rpm key
+  rpm_key:
+    key: http://repo.zabbix.com/RPM-GPG-KEY-ZABBIX
+    state: present
+
+- name: add repo
+  template:
+    src: zabbix.repo.j2
+    dest: /etc/yum.repos.d/zabbix.repo
+    mode: 0644
+
+- name: install pkgs 
+  yum: pkg="{{item}}" state=installed enablerepo="zabbix-{{zabbix_version}}"
+  with_items: zabbix_svr_pkgs
+  when: zabbix_server
+
